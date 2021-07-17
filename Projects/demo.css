@@ -1,0 +1,442 @@
+/*custom font*/
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*html {*/
+    /*height: 100%;*/
+    /*!*Image only BG fallback*!*/
+    /*!*background = gradient + image pattern combo*!*/
+/*}*/
+
+/*body {*/
+    /*!*font-family: montserrat, arial, verdana;*!*/
+    /*background-color: #eceff1 !important;*/
+/*}*/
+    /*form styles*/
+#pickupForm {
+    width: 450px;
+    margin: 25px auto;
+    text-align: center;
+    position: relative;
+    display: block;
+    transition: all 100ms linear;
+}
+
+/*.request-icons{*/
+    /*color: white;*/
+/*}*/
+
+fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 3px 2px 20px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    /*stacking fieldsets above each other*/
+    position: absolute;
+    /*display: block;*/
+}
+
+/*Hide all except first fieldset*/
+#pickupForm fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#pickupTime{
+    width: auto;
+    cursor: pointer;
+}
+/*inputs*/
+#pickupForm input,#pickupForm textarea {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.gap {
+    padding: 10px;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 1px solid blue;
+}
+
+/*buttons*/
+.action-button {
+    width: 116px !important;
+    background: #3dc970;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 8px 0px;
+    margin: 10px 5px;
+}
+
+.action-button:hover, .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3dc970;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    color: #2C3E50;
+    margin: 15px 0px 0px 0px;
+}
+
+.fs-subtitle {
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.fs-sub_subtitle {
+    font-weight: 600;
+    font-size: 1.0em;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 1.0em;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/*progressbar*/
+#progressbar {
+    width:inherit;
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+#progressbar li:before {
+    width: 20px;
+    /*line-height: 20px;*/
+    display: block;
+    font-size: 20px;
+    color: #7c7c7c;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 60%;
+    height: 2px;
+    background: #7c7c7c;
+    position: absolute;
+    left: -32%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before{
+    color: #338a3e;
+}
+
+#progressbar li.active:after {
+    background: #338a3e;
+    /*color: slategray;*/
+}
+
+#fieldSetContainer {
+    display: block;
+    min-height: 450px;
+    position: relative;
+    height: 100%;
+    margin-bottom: 100px;
+}
+
+.pickup-card{
+    width: 100%;
+    box-shadow: 1px 1px 6px 2px #d5d5d5;
+    background-color: #f6f6f6;
+    margin: auto;
+    padding: 0px;
+    margin-top: 8px;
+}
+
+
+.address-card{
+    width: 95%;
+    box-shadow: 1px 1px 6px 2px #d5d5d5;
+    background-color: #f6f6f6;
+    margin: auto;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+.pickup-card-container{
+    padding: 10px;
+}
+
+.pickup-form-details{
+    display: flex;
+    margin-top: 3px;
+}
+
+.pickup-icons{
+    width: 10%;
+    padding:4px;
+}
+
+.pickup-content{
+    width: 90%;
+    padding-left: 5px;
+    text-align: left;
+}
+
+/*5566*/
+
+.address-card-container{
+    padding: 15px;
+    cursor: pointer;
+}
+
+.address-details{
+    display: flex;
+    margin-top: 3px;
+}
+
+.address-icons{
+    width: 22px;
+    height: 22px;
+    padding:4px;
+}
+
+.address-content{
+    padding-left: 5px;
+    text-align: left;
+}
+
+.address-border-bottom{
+    box-shadow: 0px 0px 4px 3px #4CAF50;
+}
+
+#address-tags{
+    overflow-y: scroll;
+    height: 325px;
+    padding-bottom: 15px;
+}
+
+#pickupForm select{
+    display: block;
+    width: 100%;
+    height: 34px;
+    background-color: #fff;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #6d6d6d;
+    font-size: 13.5px;
+}
+
+#pickupForm select:active, #pickupForm select:focus{
+    outline: none;
+}
+
+
+#customAddressTagName{
+    display:none;
+    margin: 0px 0px 0px 10px !important;
+}
+
+#addNewAddress{
+    border-radius: 23px;
+    border: inherit;
+    background-color: #3dc970;
+    padding: 14px;
+}
+
+.previous{
+    background-color: #96a19b;
+}
+
+.next{
+    background: #3dc970;
+}
+
+.next:hover, .next:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3dc970;
+}
+
+.previous:hover, .previous:focus{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #96a19b;
+}
+
+#doYouLogin{
+    width: 450px;
+    text-align: center;
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 3px 2px 20px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.pfcal{
+    top:100px;
+    color: white;
+    font-size:20px;
+    background: #ff9821;
+}
+
+.pfinfo{
+    top: 190px;
+    color: white;
+    font-size:20px;
+    background: #2962FF;
+}
+
+.pfcal:hover, .pfinfo:hover, .pfcal:active, .pfinfo:active{
+    right:20px;
+}
+
+.pfnotice{
+    margin: auto;
+    width: 800px;
+    color: #ff0808;
+    font-size: 14px;
+    text-align: left;
+    background: #ffffff;
+    box-shadow: 3px 2px 20px 1px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 0;
+    border-radius: 3px 3px 0 0;
+    right: 0;
+    left: 0;
+    padding: 15px;
+    transition: all 100ms linear;
+}
+
+.pfnotice  li{
+    margin: 0 14px;
+}
+
+.pfinfobtm{
+    padding-left: 4px;
+    font-size: 10px;
+}
+
+.pfinfobtm > a{
+    cursor: pointer;
+}
+
+/*.sticky{*/
+    /*position: absolute;*/
+/*}*/
+
+/*.bottom-btn{*/
+    /*bottom: 0;*/
+/*}*/
+
+@media only screen and (max-width: 600px) {
+    #pickupForm, #doYouLogin{
+        width: 400px;
+    }
+    .pfnotice{
+        width: 388px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #pickupForm, #doYouLogin{
+        width: 300px;
+    }
+    .slider.slider-horizontal{
+        width: 140px;
+    }
+
+    .pfnotice{
+        width: 354px;
+    }
+
+    input, textarea, span{
+        font-size: 12px;
+    }
+
+    .pfinfobtm{
+        font-size: 8px;
+    }
+
+    .fab{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    #pickupForm, #doYouLogin{
+        width: 200px;
+    }
+
+    .slider.slider-horizontal{
+        width: 100px;
+    }
+
+    .pfnotice{
+        width: 250px;
+    }
+
+    .fs-title{
+        font-size: 11px;
+    }
+
+    input, textarea, span{
+        font-size: 7.5px;
+    }
+
+    .pfinfobtm{
+        font-size: 6px;
+    }
+
+    .action-button{
+        width: 70px;
+    }
+    #addNewAddress{
+        width: 90px;
+        font-size: 7.5px;
+    }
+}

@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="demo.css">
+    <title>Requestpickup</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://127.0.0.1:5500/main.html">Scrap Collection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Requestpickup.html">Request Pickup Now <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Learn More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/LearnMore/AboutUs.html">About Us</a>
+                        <a class="dropdown-item" href="/LearnMore/ScrapRate.html">Scrap Rate</a>
+                        <a class="dropdown-item" href="/LearnMore/HowItWorks.html">How It Works</a>
+                        <a class="dropdown-item" href="/LearnMore/FAQs.html">FAQs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/#">Scrap Blogs</a>
+                    </div>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="/Contact.html">Contact</a>
+                </li>
+
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="/#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tie Up
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/TieUp/JoinAsVendor.html">Join As Vendor</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/TieUp/CorporateTieUp.html">Corporate Tie Up</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/TieUp/Partner.html">Partner</a>
+
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/RateCard.html">Rate Card</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="/Signup-Login.html" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Signup/Login
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="SignupLogin/SignUp.html">Signup</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/SignupLogin/Login.html">Login</a>
+                    </div>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <!--This is the pick up bar-->
+
+    <div class="container-fluid">
+        <div id="ratecard-calculator" class="rateCalculator hide">
+            <div class="center junkart-container">
+                <div id="calculator-panel" class="calculator-panel">
+                    <div class="content">
+                        <div class="cross">
+                            <div class="toggleRateCalculator fa fa-times ratecard-calc-cross"></div>
+                            <div class="selected_items"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div data-toggle="modal" data-target="#convenience_fee_chart" title="Convenience Charges Applied"
+            class="fab pfinfo"><i class="fa fa-info"></i></div><!-- Modal-->
+        <div id="convenience_fee_chart" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+            <div role="document" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Convenience Fee Chart<button type="button" data-dismiss="modal"
+                                class="close">×</button></h3>
+                    </div>
+                    <div class="modal-body">
+                        <p> Please Note:</p>
+                        <p> We will be charging a tiny convenience fee per transaction, which we will deduct from the
+                            amount you receive for your scrap. The rates are as follows:</p>
+                        <p> ₹10 per ₹500</p>
+                        <p> ₹20 per ₹1000</p>
+                        <p> ₹30 per ₹2500</p>
+                        <p> ₹50 per ₹5000</p>
+                        <p> 1% above ₹5000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pfnotice">
+            <li class="text-center-of-div">Minimum scrap weight 20kg.</li>
+        </ul>
+        <div title="RateCard Calculator" class="fab pfcal toggleRateCalculator"><i class="fa fa-calculator"></i></div>
+        <form id="pickupForm">
+            <!-- progressbar-->
+            <ul id="progressbar" class="request-icons">
+                <li class="active fa fa-user fa-3x"></li>
+                <li class="fa fa-location-arrow fa-3x"></li>
+                <li class="fa fa-balance-scale fa-3x"></li>
+                <li class="fa fa-shopping-cart fa-3x"></li>
+            </ul><!-- fieldsets-->
+            <div id="fieldSetContainer">
+                <fieldset id="set1">
+                    <div class="fs-title">Details</div>
+                    <ul style="display:none" class="alert alert-danger small text-left"></ul>
+                    <div id="ajax-success-set1" style="display:none" class="alert alert-success small text-left"></div>
+                    <input id="name" type="text" name="name" placeholder="Name *" autofocus="" required="" pattern=".+"
+                        data-err_msg="Please enter your name." class="gap value">
+                    <div id="phoneField" style="display:flex"><input type="text" value="+91" readonly=""
+                            style="width: 40px; padding-left: 10px;"><input id="phone" type="number" name="phone"
+                            placeholder="Phone number *" required="" pattern="^[7-9][0-9]{9}$"
+                            data-err_msg="Please enter a valid phone number." class="gap value"></div>
+                    <div id="altphoneField" style="display:flex"><input type="text" value="+91" readonly=""
+                            style="width: 40px; padding-left: 10px;"><input id="altPhone" type="number" name="phone"
+                            placeholder="Alternate Phone number *" class="gap value"></div><input id="email" type="text"
+                        name="email" placeholder="Email *" required=""
+                        pattern="^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_]+([.]{1}[a-zA-Z0-9-_]+)+$"
+                        data-err_msg="Please enter a valid email address." class="gap value"><input type="button"
+                        for="set1" name="next" value="Next" class="btn next action-button next1">
+                    <div><input id="convenience-fee-chk" type="checkbox" style="width:initial"><span
+                            class="pfinfobtm">Convenience fee applied.&nbsp;<a data-toggle="modal"
+                                data-target="#convenience_fee_chart"><em>Read More »</em></a></span></div>
+                </fieldset>
+                <fieldset id="set2">
+                    <div id="address-tags-container" style="display:none">
+                        <div id="addNewAddress" class="btn btn-primary">Add new address</div>
+                        <div class="fs-title text-left">Choose an address:</div>
+                        <div id="address-tags"></div>
+                    </div>
+                    <div id="custom-address" style="display:none">
+                        <div class="fs-title">Address</div>
+                        <ul style="display:none" class="alert alert-danger small text-left"></ul>
+                        <!--h3.fs-subtitle Your presence on the social network--><input id="streetAddress" type="text"
+                            name="house" placeholder="House No., Floor, Street Name *" required="" pattern=".+"
+                            data-err_msg="Please enter your house number." class="gap value"><input id="pincode"
+                            type="text" name="pincode" placeholder="PinCode *" maxlength="6" required=""
+                            pattern="^[1-9][0-9]{5}" data-err_msg="Please enter a valid PinCode."
+                            class="gap value"><input id="locality" name="locality" list="localityDataList"
+                            placeholder="Locality" pattern="[\w]+[\w\s\-\.\,]*"
+                            data-err_msg="Please enter your locality." class="gap"><datalist
+                            id="localityDataList"></datalist><input id="landmark" type="text" name="landmark"
+                            placeholder="Landmark (optional)" class="gap value optional">
+                        <div style="display:flex;"><input id="district" type="text" name="city"
+                                placeholder="Town/City *" required="" pattern=".+"
+                                data-err_msg="Please enter your city." class="gap value"><input id="state" type="text"
+                                name="state" placeholder="State *" required="" pattern=".+"
+                                data-err_msg="Please enter your state." class="gap value"></div>
+                        <div id="addressTagDiv" style="display:block">
+                            <div class="fs-sub_subtitle">Add a tag:</div>
+                            <div id="addressTagBtn" style="display:flex;">
+                                <div class="requestTagButtons">Home</div>
+                                <div class="requestTagButtons">Work</div>
+                                <div class="requestTagButtons">Custom</div><input id="customAddressTagName" type="text">
+                            </div>
+                        </div>
+                    </div><input type="button" name="previous" value="Previous"
+                        class="previous btn action-button"><input type="button" name="next" for="set2" value="Next"
+                        class="next btn action-button">
+                </fieldset>
+                <fieldset id="set3">
+                    <ul style="display:none" class="alert alert-danger small text-left"></ul>
+                    <!--h3.fs-subtitle Your presence on the social network-->
+                    <div class="row">
+                        <div class="col-xs-5 gap">Weight:</div>
+                        <div class="col-xs-7">
+                            <div class="slider slider-horizontal" id="weight-slider">
+                                <div class="slider-track">
+                                    <div class="slider-track-low" style="left: 0px; width: 0%;"></div>
+                                    <div class="slider-selection" style="left: 0%; width: 0%;"></div>
+                                    <div class="slider-track-high" style="right: 0px; width: 100%;"></div>
+                                </div>
+                                <div class="tooltip tooltip-main top" role="presentation"
+                                    style="left: 0%; margin-left: 0px;">
+                                    <div class="tooltip-arrow"></div>
+                                    <div class="tooltip-inner">20kg - 80kg</div>
+                                </div>
+                                <div class="tooltip tooltip-min top" role="presentation">
+                                    <div class="tooltip-arrow"></div>
+                                    <div class="tooltip-inner"></div>
+                                </div>
+                                <div class="tooltip tooltip-max top" role="presentation">
+                                    <div class="tooltip-arrow"></div>
+                                    <div class="tooltip-inner"></div>
+                                </div>
+                                <div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="20"
+                                    aria-valuemax="2010" aria-valuenow="20" tabindex="0" style="left: 0%;"></div>
+                                <div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="20"
+                                    aria-valuemax="2010" aria-valuenow="20" tabindex="0" style="left: 0%;"></div>
+                            </div><input id="weight" type="text" name="weight"
+                                data-err_msg="Please enter estimated scrap weight." class="gap value" data-value="20"
+                                value="20" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5 gap">Pickup Time:</div>
+                        <div class="col-xs-7"><input id="pickupTime" placeholder="Pick Time" type="text" readonly=""
+                                data-err_msg="Please enter your locality." class="form_datetime gap"><span
+                                style="margin-left:-18px;" class="fa fa-calendar"></span></div>
+                    </div><input type="button" name="previous" value="Previous"
+                        class="previous btn action-button"><input type="button" name="next" for="set3" value="Next"
+                        class="next btn action-button">
+                </fieldset>
+                <fieldset>
+                    <div class="fs-title">Confirm your pickup request:</div>
+                    <div>
+                        <div class="pickup-card">
+                            <div class="pickup-card-container">
+                                <div class="fs-sub_subtitle">Your details:</div>
+                                <div class="pickup-form-details"><span class="fa fa-user pickup-icons"></span><span
+                                        class="pickupReq-name pickup-content"></span></div>
+                                <div class="pickup-form-details"><span class="fa fa-phone pickup-icons"></span><span
+                                        class="pickupReq-phone pickup-content"></span></div>
+                                <div class="pickup-form-details"><span class="fa fa-phone pickup-icons"></span><span
+                                        class="pickupReq-altPhone pickup-content"></span></div>
+                                <div class="pickup-form-details"><span class="fa fa-envelope pickup-icons"></span><span
+                                        class="pickupReq-email pickup-content"></span></div>
+                            </div>
+                        </div>
+                        <div class="pickup-card">
+                            <div class="pickup-card-container">
+                                <div class="fs-sub_subtitle">Pickup address and Time:</div>
+                                <div class="pickup-form-details"><span
+                                        class="fa fa-map-marker pickup-icons"></span><span
+                                        class="pickupReq-address pickup-content"></span></div>
+                                <div class="pickup-form-details"><span class="fa fa-clock-o pickup-icons"></span><span
+                                        class="pickupReq-time pickup-content"></span></div>
+                            </div>
+                        </div>
+                        <div class="pickup-card">
+                            <div class="pickup-card-container">
+                                <div class="fs-sub_subtitle">Estimated weight:</div>
+                                <div class="pickup-form-details"><span
+                                        class="fa fa-balance-scale pickup-icons"></span><span
+                                        class="pickupReq-weight pickup-content"></span></div>
+                            </div>
+                        </div>
+                        <div class="pickup-card">
+                            <div class="pickup-card-container">
+                                <div class="fs-sub_subtitle">Message (If any)</div>
+                                <div style="display: flex"><span class="fa fa-commenting pickup-icons"></span><input
+                                        id="message" type="text" name="message"
+                                        placeholder="I want to sell iron and old cardboards."
+                                        style="background-color: #f6f6f6;" class="value optional pickup-content"></div>
+                            </div>
+                        </div>
+                        <div id="show-more-requests" class="alert alert-info nofloat">
+                            <p>By clicking "Request Pickup" you accept the&nbsp;<span><a
+                                        href="/view/terms-and-conditions" target="_blank">T&amp;C.</a></span></p>
+                        </div>
+                    </div><input type="button" name="previous" value="Previous"
+                        class="previous btn action-button"><input id="submitBtn" type="button" value="Request Pickup"
+                        class="btn submit action-button">
+                </fieldset>
+            </div>
+        </form>
+        <div id="doYouLogin" style="display: none">
+            <div class="fs-title">Do you want to login?<span class="loginLure"></span></div>
+            <div class="subtitle"></div><input id="sendOtp" type="button" value="Send Otp"
+                class="btn action-button"><input type="button" onclick="window.location='/view/ratecard'"
+                value="No thanks!" class="btn action-button">
+        </div>
+    </div>
+
+
+
+
+    <!--Footer for the the page-->
+    <!-- Footer -->
+    <footer class="page-footer font-small blue-grey lighten-5">
+
+        <div class="container">
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left mt-5">
+
+                <!-- Grid row -->
+                <div class="row mt-3 dark-grey-text">
+
+
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Services</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a class="dark-grey-text" href="/Requestpickup.html">Scrap Pickup</a>
+                        </p>
+                        <p>
+                            <a class="dark-grey-text" href="/TieUp/CorporateTieUp.html">Corporate Tie-up</a>
+                        </p>
+                        <p>
+                            <a class="dark-grey-text" href="/TieUp/JoinAsVendor.html">Join as Vendor</a>
+                        </p>
+
+                    </div>
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Support </h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a class="dark-grey-text" href="/Contact.html">Contact us</a>
+                        </p>
+                        <p>
+                            <a class="dark-grey-text" href="/LearnMore/FAQs.html">Help & FAQs</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Company</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a class="dark-grey-text" href="/LearnMore/AboutUs.html">About us </a>
+                        </p>
+                        <p>
+                            <a class="dark-grey-text" href="/#">Scrap Blocgs</a>
+                        </p>
+                    </div>
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Our RateCard</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a class="dark-grey-text" href="/LearnMore/ScrapRate.html">ScrapRate Card</a>
+                        </p>
+                        <p>
+                            <a class="dark-grey-text" href="/LearnMore/ScrapRate.html">ScrapRate Calculator</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <i class="fas fa-home mr-3"></i> Uttar Pradesh, 201003 , India
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i> mohdrustam001@gmail.com
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i> wasimwani98@gmail.com
+                        </p>
+
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> +91 741 7200 362
+                        </p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i> +91 600 5799 477
+                        </p>
+
+                    </div>
+
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+
+            <!-- Footer Links -->
+        </div>
+
+
+    </footer>
+    <!-- Footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="demo.js"></script>
+</body>
+
+</html>
